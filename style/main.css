@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url(../img/old-paper-bg.png);
+}
+
 :root {
   --primary-red: #742335;
   --primary-gold: #d0b306;
