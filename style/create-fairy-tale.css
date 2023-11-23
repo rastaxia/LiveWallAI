@@ -1,9 +1,55 @@
-main{
+body {
+    background-image: url(../img/old-paper-bg.png);
+    background-size: cover;
+}
+
+main {
     margin: 9.5%;
 }
 
+/* title */
+main h1 {
+    color: #000;
+    font-family: Lucida Calligraphy;
+    font-size: 2.8125rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+
+main span {
+    color: #742335;
+    font-family: Lucida Calligraphy;
+    font-size: 2.8125rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* stripe with bullet */
+.stripeBullet {
+    display: flex;
+    margin: 3% 0%;
+}
+
+.stripe {
+    width: 48%;
+    height: 6px;
+    background: #1E1E1E;
+    margin-top: 1.5%;
+}
+
+.bullet {
+    width: 3vw;
+    height: 3vw;
+    background: #000;
+    border-radius: 50%;
+    margin: 0% 2%;
+}
+
+
 /* text */
-p1{
+p1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
@@ -11,7 +57,7 @@ p1{
 }
 
 /* Inputfield */
-input{
+input {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
@@ -22,7 +68,7 @@ input{
 }
 
 /* text in inputfield */
-::placeholder{
+::placeholder {
     color: #494949;
     font-style: italic;
 }
