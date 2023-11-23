@@ -1,0 +1,25 @@
+/* background */
+body{
+    background: url('/img/cover-old-book.jpg'), lightgray 50% / cover no-repeat, #9C2237;
+}
+
+/* margin of webpage */
+main{
+    margin: 9.5%;
+}
+
+/* Font and size h1 */
+h1{
+color: #D0B306;
+font-family: Lucida Calligraphy;
+font-size: 5.5rem;    
+font-style: italic;
+font-weight: 400;
+padding-bottom:4% ;
+}
+
+/* logo image */
+img{
+    width: 77.344vw;
+    margin-top: 5%;
+}
