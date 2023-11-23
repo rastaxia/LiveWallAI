@@ -1,11 +1,12 @@
 /* background */
 body{
-    background: url('/img/cover-old-book.jpg'), lightgray 50% / cover no-repeat, #9C2237;
+    background: #9C2237;
 }
 
 /* margin of webpage */
 main{
     margin: 9.5%;
+
 }
 
 /* Font and size h1 */
@@ -19,7 +20,8 @@ padding-bottom:4% ;
 }
 
 /* logo image */
-img{
+main img{
     width: 77.344vw;
     margin-top: 5%;
+    z-index: 2;
 }
