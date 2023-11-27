@@ -18,14 +18,8 @@ body::after{
     opacity: 0.15;
 }
 
-/* margin of webpage */
-main{
-    margin: 9.5%;
-
-}
-
 /* Font and size h1 */
-h1{
+main h1{
 color: #D0B306;
 font-family: Lucida Calligraphy;
 font-size: 5.5rem;    
@@ -37,6 +31,6 @@ padding-bottom:4% ;
 /* logo image */
 main img{
     width: 77.344vw;
-    margin-top: 5%;
+    margin-top: 0.5%;
     z-index: 2;
 }
