@@ -1,6 +1,21 @@
 /* background */
 body{
     background: #9C2237;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* filter background */
+body::after{
+    content: "";
+    background: url(../img/cover-old-book.jpg)no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.15;
 }
 
 /* margin of webpage */
