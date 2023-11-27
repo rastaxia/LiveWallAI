@@ -6,6 +6,7 @@
 
 body {
   background-image: url(../img/old-paper-bg.png);
+  background-size: cover;
 }
 
 :root {
