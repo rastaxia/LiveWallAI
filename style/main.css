@@ -21,17 +21,20 @@ body {
 /* This is the divider
 that you see below
 primary titles, like 
-page titles. */
+page titles.
+
+To use it, create a
+div with the class below
+and put a span element
+inside. */
 .primarydivider{
   width: 100%;
 
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-
-  margin: 20px 0;
   /* background-color: black; */
 }
 
@@ -62,4 +65,18 @@ page titles. */
   height: 20px;
 
   border-radius: 20px;
+}
+
+/* Secondary Divider */
+
+/* This is the style
+for the secondary divider.
+Simply use an hr element
+to use this style. */
+
+hr {
+  height: 10px;
+  background-color: black;
+
+  border: none;
 }
