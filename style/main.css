@@ -15,3 +15,28 @@ body {
   --secondary-blue: #63adc3;
   --secondary-brown: #733224;
 }
+
+/* Primary divider */
+
+/* This is the divider
+that you see below
+primary titles, like 
+page titles. */
+
+.primarydivider {
+  display: flex;
+
+  flex-wrap: nowrap;
+}
+
+.primarydivider > div {
+
+}
+
+.primarydivider > div::before {
+
+}
+
+.primarydivider > div::after {
+  
+}
