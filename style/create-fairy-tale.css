@@ -91,32 +91,21 @@ button {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
+    margin-top: 5%;
 }
 
 #randomButton {
-    background: #63adc3;
-    margin-top: 4%;
-    border: 0.391vw solid #63adc3;
-    color: white;
-    padding: 3% 4%;
-}
-
-.buttonsStories{
-    margin-top: 28%;
-
-}
-
-#myStories {
-    background: none;
+    background: transparent;
     border: 0.391vw solid #000;
-    color: #000;
     padding: 3% 4%;
 }
+
+
 
 #startStory {
     background: #326760;
     color: white;
     border: 0.391vw solid #326760;
-    padding: 3% 7%;
+    padding: 3% 4%;
     float: right;
 }
