@@ -124,3 +124,19 @@ button {
   font-weight: 700;
   margin-top: 5%;
 }
+
+.PrimaryButton {
+  background: #326760;
+  color: white;
+  border: 0.391vw solid #326760;
+  padding: 3% 4%;
+  float: right;
+  outline: 0.3vw solid white;
+  outline-offset: -1.3vw;
+}
+
+.SecondaryButton {
+  background: transparent;
+  border: 0.391vw solid #000;
+  padding: 3% 4%;
+}
