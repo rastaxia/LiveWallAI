@@ -3,8 +3,19 @@ body {
     overflow: hidden;
 }
 
-
 /* stripe with bullet */
+.primarydivider{
+    margin: 3% 0%;
+}
+.primarydivider::before {
+    height: 6px;
+}
+
+.primarydivider::after {
+    height: 6px;
+}
+
+
 .stripeBullet {
     display: flex;
     margin: 3% 0%;
@@ -53,9 +64,6 @@ input {
 /* buttons */
 button {
     border-radius: 1.5vw;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
     margin-top: 39%;
 }
 
