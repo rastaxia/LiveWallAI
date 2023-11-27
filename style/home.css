@@ -1,18 +1,5 @@
 @import url(../style/main.css);
 
-body {
-    background-size: cover;
-    background-position: fixed;
-    padding: 80px 40px;
-}
-
 h1 {
-    font-style: italic;
-    font-size: 40px;
-    
     text-align: center;
-}
-
-h1 > span {
-    color: var(--primary-red);
 }
