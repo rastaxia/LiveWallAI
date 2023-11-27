@@ -42,7 +42,7 @@ inside. */
 .primarydivider::before {
   background-color: black;
   width: 45%;
-  height: 10px;
+  height: 6px;
 
   /* display: inline-block; */
 
@@ -52,7 +52,7 @@ inside. */
 .primarydivider::after {
   background-color: black; 
   width: 45%;
-  height: 10px;
+  height: 6px;
 
   /* display: inline-block; */
 
@@ -62,10 +62,10 @@ inside. */
 .primarydivider > span {
   background-color: black;
 
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 
-  border-radius: 20px;
+  border-radius: 24px;
 }
 
 /* Secondary Divider */
@@ -76,7 +76,7 @@ Simply use an hr element
 to use this style. */
 
 hr {
-  height: 10px;
+  height: 6px;
   background-color: black;
 
   border: none;
