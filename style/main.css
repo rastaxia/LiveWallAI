@@ -127,6 +127,8 @@ Add ".Primary" or ".Secondary" to style it. */
   font-size: 1.25rem;
   font-weight: 700;
   margin-top: 5%;
+  color: black;
+  text-decoration: none;
 }
 
 .Primary {
