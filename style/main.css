@@ -117,15 +117,21 @@ p {
 }
 
 /* Buttons */
-button {
+
+/* To make a button, use a <a> tag and give it the class button.
+Add ".Primary" or ".Secondary" to style it. */
+
+.button {
   border-radius: 7vw;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   margin-top: 5%;
+  color: black;
+  text-decoration: none;
 }
 
-.PrimaryButton {
+.Primary {
   background: #326760;
   color: white;
   border: 0.391vw solid #326760;
@@ -135,7 +141,7 @@ button {
   outline-offset: -1.3vw;
 }
 
-.SecondaryButton {
+.Secondary {
   background: transparent;
   border: 0.391vw solid #000;
   padding: 3% 4%;
