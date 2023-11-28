@@ -20,17 +20,3 @@ img {
     width: 50%;
     text-align: center;
 }
-
-.btncontainer > a {
-    border-radius: 7vw;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-top: 5%;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.SecondaryButton {
-    color: black;
-}
