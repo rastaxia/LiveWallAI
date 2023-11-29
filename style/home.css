@@ -1,0 +1,22 @@
+@import url(../style/main.css);
+
+h1 {
+    text-align: center;
+    margin: 18px 0;
+}
+
+img {
+    width: 100%;
+    margin: 18px 0;
+}
+
+.btncontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btncontainer > a {
+    width: 50%;
+    text-align: center;
+}
