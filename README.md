@@ -1,6 +1,25 @@
-# LiveWall Doornroosje 
+# LiveWall Sprookjesboek
 
+Livewall Sprookjesboek is een interactief, ai-gedreven sprookjesboek die voor ouders en kinderen sprookjes kan genereren. Dit project is ontwikkeld voor LiveWall door studenten Media & Design op Fontys.
 
+## Installation
 
-## Getting started
-Volg hier de progressie voor de sprookjes generator gemaakt door LiveWall Doornroosje
+[NodeJS](https://nodejs.org/en/) is een requirement.
+
+Gebruik de package manager [NPM](https://www.npmjs.com/) om de benodigde libraries te downloaden.
+
+```bash
+npm install
+```
+
+## Usage
+
+Terwijl de applicatie bedoeld is om te draaien op een tablet in een boek, kan je het ook draaien en uitproberen lokaal in een browser.
+
+## Contributing
+
+Contributie is alleen gedaan door in-house ontwikkelaars of ontwikkelaars van de klant (LiveWall).
+
+## License
+
+Dit is geen open-source project, en gebruikt daarom de licensie gegeven aan dit project door de klant.
