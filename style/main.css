@@ -28,7 +28,7 @@ To use it, create a
 div with the class below
 and put a span element
 inside. */
-.primarydivider{
+.primarydivider {
   width: 100%;
 
   display: flex;
@@ -46,17 +46,17 @@ inside. */
 
   /* display: inline-block; */
 
-  content: '';
+  content: "";
 }
 
 .primarydivider::after {
-  background-color: black; 
+  background-color: black;
   width: 45%;
   height: 6px;
 
   /* display: inline-block; */
 
-  content: '';
+  content: "";
 }
 
 .primarydivider > span {
@@ -98,7 +98,7 @@ main h1 {
   line-height: normal;
 }
 
-main span {
+h1 span {
   color: #742335;
   font-family: Lucida Calligraphy;
   font-size: 2.8125rem;
