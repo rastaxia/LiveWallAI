@@ -98,7 +98,7 @@ main h1 {
   line-height: normal;
 }
 
-main span {
+h1 span {
   color: #742335;
   font-family: Lucida Calligraphy;
   font-size: 2.8125rem;
