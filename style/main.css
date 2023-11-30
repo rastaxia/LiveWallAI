@@ -122,7 +122,7 @@ p {
 Add ".Primary" or ".Secondary" to style it. */
 
 .button {
-  border-radius: 7vw;
+  border-radius: 1.5vw;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
