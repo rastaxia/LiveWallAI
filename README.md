@@ -14,7 +14,7 @@ npm install
 
 ## Usage
 
-Terwijl de applicatie bedoeld is om te draaien op een tablet in een boek, kan je het ook draaien en uitproberen lokaal in een browser.
+Terwijl de applicatie bedoeld is om te draaien op een tablet(768x1024) in een boek, kan je het ook draaien en uitproberen lokaal in een browser. 
 
 ## Contributing
 
