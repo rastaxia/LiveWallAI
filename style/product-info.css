@@ -8,3 +8,8 @@ img {
     width: 100%;
     margin: 18px 0;
 }
+
+.button {
+    margin-top: 18px;
+    display: inline-block;
+}
