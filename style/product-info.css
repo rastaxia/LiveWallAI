@@ -13,3 +13,7 @@ img {
     margin-top: 18px;
     display: inline-block;
 }
+
+.btncontainer{
+    text-align: center;
+}
