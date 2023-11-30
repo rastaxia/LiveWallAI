@@ -136,7 +136,6 @@ Add ".Primary" or ".Secondary" to style it. */
   color: white;
   border: 0.391vw solid #326760;
   padding: 3% 4%;
-  float: right;
   outline: 0.3vw solid white;
   outline-offset: -1.3vw;
 }
