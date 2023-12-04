@@ -40,3 +40,21 @@ decreaseBtn2.addEventListener('click', () => {
     document.getElementsByName('lineHeight')[0].placeholder = text.style.lineHeight = `${textLineheight}`; // lineheight shown in placeholder
 })
 
+// Pop-up window to save PDF
+
+
+downloadBtn = document.getElementById('download')
+downloadBtn.addEventListener('click', doAction)
+function doAction(action, message) {
+    const response = confirm("Wil je het verhaal opslaan als PDF?")
+    if (confirm(message)) {
+      //If user say 'yes' to confirm
+      console.log(action + ' is confirmed');
+      
+    
+    } else {
+      //If user say 'no' and cancelled the action
+      console.log(action + ' is cancelled');
+    }
+};
+
