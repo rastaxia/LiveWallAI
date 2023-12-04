@@ -1,3 +1,6 @@
+main {
+    margin: 9.5% 9.5% 5.31% 9.5%;
+  }
 /* Listen button */
 #listenBtn {
     background: #326760;
@@ -66,3 +69,75 @@ button {
     outline-offset: -1.3vw;
     margin-top: 39%;
 }
+
+/* settingsbar */
+
+.settingsbar{
+    background-image: url("../img/old_paper-settingsbar.webp");
+    display: flex;
+}
+
+.settingsbar img{
+    padding: 2% 20%;
+}
+
+.settingsbar button{
+    background:none;
+    border: none;
+}
+
+#fontPopover{
+    background-image: url("../img/old_paper-settingsbar.webp");
+    width: 40%;
+    padding: 3% 4%;
+    border-radius: 3%;
+    margin-top: 78%;
+    margin-left: 29%;
+}
+
+.minusPlus{
+    display: flex;
+    margin-left: 14%;
+    width: 71%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.minusPlus img{
+    padding: 0% 1%;
+}
+
+.minusPlus input{
+    background: none;
+    border: none;
+    text-align: center;
+    font-size: 1.5625rem;
+    align-self: center;
+    margin-top: 0;
+    border-bottom: thick black dotted;
+    margin: 0% 2%
+}
+
+::placeholder{
+    color: #000;
+
+}
+
+h2 span {
+    color: #742335;
+    font-family: Lucida Calligraphy;
+    font-size: 1.5625rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  h2 {
+    color: #000;
+    font-family: Lucida Calligraphy;
+    font-size: 1.5625rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
