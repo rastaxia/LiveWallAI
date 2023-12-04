@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/generate_story.css" />
-    <script defer src="./js/listen.js"></script>
+    <!-- <script defer src="./js/listen.js"></script> -->
     <script defer src="./js/settingsbar.js"></script>
     <title>Fairy Tale Story</title>
 </head>
@@ -15,41 +15,49 @@
     <main>
         <h1><span>E</span>lara's Schitterende Speelplaats</h1>
         <button id="listenBtn"><img src="img/play-icon.png" alt="">Luister</button>
-        <div class="text_and_image">
-            <div class="textColom">
-                <p>Er was eens, in het vrolijke Spiegelmeer, een lichtgevende Elf genaamd Elvira. Met huid zo helder als
-                    het schijnsel van de maan en ogen die twinkelden als sterren, woonde ze aan de rand van het
-                    betoverende water. Elvira's favoriete tijd bracht ze door met de speelse eenhoorns die langs de
-                    oever sierlijk rondhuppelden.
-                </p>
+            <div class="text_and_image">
+                <div class="textColom">
+                    <p>Er was eens, in het vrolijke Spiegelmeer, een lichtgevende Elf genaamd Elvira. Met huid zo helder
+                        als
+                        het schijnsel van de maan en ogen die twinkelden als sterren, woonde ze aan de rand van het
+                        betoverende water. Elvira's favoriete tijd bracht ze door met de speelse eenhoorns die langs de
+                        oever sierlijk rondhuppelden.
+                    </p>
+                </div>
+                <img src="img/image-story1.jpeg" alt="">
             </div>
-            <img src="img/image-story1.jpeg" alt="">
+
+            <p>Elvira en de eenhoorns deelden betoverende momenten, waarbij ze samen dansten in het maanlicht dat
+                weerspiegeld werd in het glinsterende meer. Ze speelden spelletjes met fonkelende lichtjes die Elvira
+                uit haar toverstaf toverde, waardoor de eenhoorns schitterden als magische sterren in de nacht.
+            </p>
         </div>
 
-        <p>Elvira en de eenhoorns deelden betoverende momenten, waarbij ze samen dansten in het maanlicht dat
-            weerspiegeld werd in het glinsterende meer. Ze speelden spelletjes met fonkelende lichtjes die Elvira
-            uit haar toverstaf toverde, waardoor de eenhoorns schitterden als magische sterren in de nacht.
-        </p>
 
-        
+        <button id="increase">+</button>
+        <button id="decrease">-</button>
+        <script>
+       
+        </script>
     </main>
     <div class="settingsbar">
         <img src="img/home-icon.png" alt="">
-        <button popovertarget="fontPopover"><img  src="img/font-icon.png" alt=""></button>
+        <button popovertarget="fontPopover"><img src="img/font-icon.png" alt=""></button>
         <div id="fontPopover" popover>
             <h2><span>L</span>ettertype grootte</h2>
-            <div class="minusPlus">
-                <img src="img/minus-button.png" alt="">
+            <div class="changeFontsize">
+                <button id="decrease"><img src="img/minus-button.png" alt=""></button>
                 <input type="text" placeholder="16">
-                <img src="img/plus-button.png" alt="">
+                <button id="increase"><img src="img/plus-button.png" alt=""></button>
             </div>
             <h2><span>I</span>nterlinie</h2>
-            <div class="minusPlus">
-                <img src="img/minus-button.png" alt="">
+            <div class="changeLineheight">
+                <button id="decreaseLineheight"><img src="img/minus-button.png" alt=""></button>
                 <input type="text" placeholder="1.5">
-                <img src="img/plus-button.png" alt="">
+                <button id="increaseLineheigt"><img src="img/plus-button.png" alt=""></button>
             </div>
         </div>
+
         <img src="img/download-icon.png" alt="">
     </div>
 </body>
