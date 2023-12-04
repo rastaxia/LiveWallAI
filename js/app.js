@@ -1,9 +1,8 @@
-// Server sided code
 // Import required modules
-const bodyParser = require("body-parser");
 const express = require("express");
 const OpenAI = require("openai");
 const path = require("path");
+const bodyParser = require("body-parser"); // Add this line
 
 // Set the OpenAI API key as an environment variable
 process.env.OPENAI_API_KEY = "no leak";
@@ -18,92 +17,39 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Serve the HTML file
+app.use(express.static(path.join(__dirname, "../")));
+
+// Parse incoming JSON data
 app.use(bodyParser.json());
 
-app.post("/create-fairy-tale.html", (req, res) => {
-  const mainCharacter = req.body.mainCharacter;
-  const location = req.body.location;
-  const magicWorld = req.body.magicWorld;
-  const startStory = req.body.startStory;
+//Data handeling
+app.post("/create-fairy-tale.html", async (req, res) => {
+  const { name, local, world } = req.body;
+  try {
+    const chat = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: `tell me a story using name ${name}, local ${local}, world ${world} put it in a JSON format the story must be 2 lines long`,
+        },
+        {
+          role: "user",
+          content: "Once upon a time",
+        },
+      ],
+      model: "gpt-3.5-turbo-1106",
+      temperature: 0.6,
+      stream: true,
+      response_format: { type: "json_object" },
+    });
 
-  // Do something with the data (e.g., store it in a database)
-
-  res.json({ message: "Data received successfully!" });
+    for await (const chunk of chat) {
+      res.json(chunk.choices[0].delta.content);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
-
-// // Handle form submission
-// app.get("/generate-fairy-tale", async (req, res) => {
-//   // Extract query parameters (name and style) from the request
-//   const { name, onderwerp, stijl, extraName } = req.query;
-
-//   try {
-//     // Use the OpenAI API to generate a chat-based completion for the given prompt
-//     const completion = await openai.chat.completions.create({
-//       messages: [
-//         {
-//           role: "system",
-//           content: `(variabel 1), (variabel 2), (variabel 3) controleer in elke denkbare context of deze variabelen aanstootgevend, obsceen, seksueel, racistisch of gewelddadig zijn voor kinderen.
-//             Het kan zijn dat er ook nog een (variabel 4) is; als deze leeg is, doe hier dan niets mee. Als de variabelen kindvriendelijk zijn, schrijf dan een fantasieverhaal in het NEDERLANDS waar de hoofdpersonage ${name} heet.
-//             Voeg de naam ${extraName} toe als variabel 4 niet leeg is. Als deze leeg is of niet bestaat, doe er dan niets mee.
-//             Dit verhaal moet een hero's journey hebben; het onderwerp is ${onderwerp} en het verhaal moet geschreven zijn in de stijl van ${stijl}.
-//             Geef het verhaal ook een titel De titel moet altijd boven het verhaal staan onder de keywords. Het verhaal moet minimaal 2000 woorden bevatten.
-//             Je hoeft niet te vermelden of het verhaal kindvriendelijk is; je kunt direct met het verhaal beginnen. Als dit niet het geval is, genereer dan alleen de woorden NIET KINDVRIENDELIJK.
-//             Genereer ook 3 keywords; laat de keywords slechts 1 woord lang zijn. Deze keywords moeten gebruikt kunnen worden om 1 foto per keyword te zoeken die goed bij het verhaal past.
-//             Beschrijf de keywords als eerste bovenaan het verhaal voordat de titel wordt genoemd; DOE HET ALTIJD ALS VOLGT: Keywords: keyword1, keyword2, keyword3.!!!! er hoeft geen comma , na de laatste keyword.
-//             De keywords moeten geen namen zijn van de karakters. Je hoeft niet te vermelden in welke stijl het is geschreven of wat het doel van het verhaal was ook hoef je niet te zeggen story.
-//             Maak de keywords engels. Het vehraal zelf moet in het engels zijn. Zet ook op drie verschillende plekken in het verhaal waar een foto moet doe dit door te zeggen foto1 foto2 foto3 het verhaal mag dus maar 3 fotos hebbne.
-//             je hoeft niet te vermelden story:
-//             Zet de output in een JSON formaat.
-//             `,
-//         },
-//         {
-//           role: "user",
-//           content: `Variabel 1 = ${name} ; Variabel 2 = ${onderwerp} ; Variabel 3 = ${stijl} ; Variabel 4 = ${extraName}`,
-//         },
-//       ],
-//       model: "gpt-3.5-turbo-1106",
-//       // test only
-//       //   model: "gpt-4-1106-preview",
-//       temperature: 0.6,
-//       stream: true,
-//       response_format: { type: "json_object" },
-//       top_p: 1,
-//       n: 1,
-//       presence_penalty: 0,
-//       frequency_penalty: 0,
-//     });
-
-//     // Set response headers for Server-Sent Events (SSE)
-//     res.setHeader("Content-Type", "text/event-stream;charset=utf-8");
-//     res.setHeader("Cache-Control", "no-cache");
-//     res.setHeader("Connection", "keep-alive");
-
-//     let count = 0;
-//     let test = "";
-//     // Handle the PassThrough stream events
-//     completion.response.body.on("data", (chunk) => {
-//       // Write each chunk of data to the response stream
-//       if (count == 0) {
-//         test = chunk.toString();
-//       } else if (count == 1) {
-//         test += chunk.toString();
-//         res.write(`${test}\n\n`);
-//       } else {
-//         res.write(`${chunk.toString()}\n\n`);
-//       }
-//       count++;
-//     });
-
-//     // End the response when the stream is complete
-//     completion.response.body.on("end", () => {
-//       res.end();
-//     });
-//   } catch (error) {
-//     // Handle errors, log them, and send a 500 Internal Server Error status
-//     console.error("Error generating fairy tale:", error);
-//     res.status(500).end();
-//   }
-// });
 
 // Start the Express application, listening on the specified port
 app.listen(port, () => {
