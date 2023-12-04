@@ -1,0 +1,68 @@
+/* Listen button */
+#listenBtn {
+    background: #326760;
+    color: white;
+    border: 0.391vw solid #326760;
+    padding: 3% 4%;
+    outline: 0.3vw solid white;
+    outline-offset: -1.3vw;
+    border-radius: 1.5vw;
+    gap: 10%;
+    display: flex;
+}
+
+/* play icon */
+#listenBtn img {
+    margin-top: 2.5%;
+    margin-left: -7%;
+}
+
+/* text and image */
+.text_and_image {
+    display: flex;
+    gap: 3.5%;
+    margin: 6% 0%;
+}
+
+.textColom {
+    width: 45%;
+}
+
+.text_and_image img {
+    width: 362px;
+    height: 362px;
+}
+
+.imageStory {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.imageStory img {
+    width: 362px;
+    height: 362px;
+}
+
+/* buttons */
+button {
+    border-radius: 1.5vw;
+
+}
+
+#myStories {
+    background: transparent;
+    border: 0.391vw solid #000;
+    padding: 3% 4%;
+    margin-top: 39%;
+}
+
+#startNewstory {
+    background: #326760;
+    color: white;
+    border: 0.391vw solid #326760;
+    padding: 3% 4%;
+    float: right;
+    outline: 0.3vw solid white;
+    outline-offset: -1.3vw;
+    margin-top: 39%;
+}
