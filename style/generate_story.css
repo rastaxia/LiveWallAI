@@ -71,11 +71,11 @@ button {
 }
 
 /* settingsbar */
-
 .settingsbar{
     background-image: url("../img/old_paper-settingsbar.webp");
     display: flex;
     margin-top: 5.7%;
+    position: sticky;
 }
 
 .settingsbar button{
@@ -83,7 +83,7 @@ button {
     border: none;
     padding: 2% 13%;
 }
-
+/* popover */
 .settingsbar #fontPopover button{
     padding: 0;
 }
@@ -95,8 +95,10 @@ button {
     border-radius: 3%;
     margin-top: 77.5%;
     margin-left: 28%;
+    position: fixed;
 }
 
+/* Change fontsize in popover */
 .changeFontsize{
     display: flex;
     width: 71%;
@@ -109,6 +111,7 @@ button {
     padding: 0% 0%;
 }
 
+/* Change lineheight in popover */
 .changeLineheight img{
     padding: 0% 0%;
 }
@@ -121,6 +124,7 @@ button {
     margin-bottom: 15%;
 }
 
+/* Input of fontsize and lineheight in popover */
 input{
     background: none;
     border: none;
@@ -132,10 +136,12 @@ input{
     margin: 0% 2%;
 }
 
+/* placeholder from input */
 ::placeholder{
     color: #000;
 }
 
+/* titles in popover */
 h2 span {
     color: #742335;
     font-family: Lucida Calligraphy;
