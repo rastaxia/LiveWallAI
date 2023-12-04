@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="style/generate_story.css" />
     <!-- <script defer src="./js/listen.js"></script> -->
     <script defer src="./js/settingsbar.js"></script>
-    <script src="path/to/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
     <title>Fairy Tale Story</title>
 </head>
 
 <body>
-    <main>
+    <main id="textPdf">
         <h1><span>E</span>lara's Schitterende Speelplaats</h1>
         <button id="listenBtn"><img src="img/play-icon.png" alt="">Luister</button>
         <div class="text_and_image">
@@ -35,9 +35,11 @@
         </div>
 
     </main>
+    <!-- Settingsbar -->
     <div class="settingsbar">
         <button><img src="img/home-icon.png" alt=""></button>
         <button popovertarget="fontPopover"><img src="img/font-icon.png" alt=""></button>
+        <!-- Popover increase and decrease font and lineheight -->
         <div id="fontPopover" popover>
             <h2><span>L</span>ettertype grootte</h2>
             <div class="changeFontsize">
@@ -52,11 +54,9 @@
                 <button id="increaselineHeight"><img src="img/plus-button.png" alt=""></button>
             </div>
         </div>
-
         <button id="download"><img src="img/download-icon.png" alt=""></button>
     </div>
-    
- 
+
 </body>
 
 

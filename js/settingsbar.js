@@ -40,21 +40,22 @@ decreaseBtn2.addEventListener('click', () => {
     document.getElementsByName('lineHeight')[0].placeholder = text.style.lineHeight = `${textLineheight}`; // lineheight shown in placeholder
 })
 
-// Pop-up window to save PDF
-
-
+// Convert HTML to PDF
 downloadBtn = document.getElementById('download')
-downloadBtn.addEventListener('click', doAction)
-function doAction(action, message) {
+downloadBtn.addEventListener('click', getChoicePDF)
+function convertToPDF() {
+    let pdfFile = document.getElementById('textPdf');    // select text in HTML to convert to PDF
+    html2pdf(pdfFile);  // convert html to pdf
+  }
+
+// Pop-up window to save PDF
+function getChoicePDF(action, message) {
     const response = confirm("Wil je het verhaal opslaan als PDF?")
-    if (confirm(message)) {
-      //If user say 'yes' to confirm
-      console.log(action + ' is confirmed');
-      
-    
+    if (confirm) {
+      //If user say 'yes' to confirm the PDF will download
+      convertToPDF();
     } else {
       //If user say 'no' and cancelled the action
-      console.log(action + ' is cancelled');
     }
 };
 
