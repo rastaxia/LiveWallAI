@@ -40,7 +40,7 @@ app.post("/create-fairy-tale.html", async (req, res) => {
           Deze keywords moeten gebruikt kunnen worden om 1 foto per keyword te zoeken die goed bij het verhaal past. Beschrijf de keywords als eerste bovenaan het verhaal voordat de titel wordt genoemd;
           DOE HET ALTIJD ALS VOLGT: Keywords: keyword1, keyword2, keyword3.!!!! er hoeft geen comma , na de laatste keyword. De keywords moeten geen namen zijn van de karakters.
           Je hoeft niet te vermelden wat het doel van het verhaal was ook hoef je niet te zeggen story:. Maak de keywords in het ENGELS!!. Het vehraal zelf moet in het NEDERLANDS zijn.
-          Zet ook op drie verschillende plekken in het verhaal waar een foto moet doe dit door te zeggen foto1 foto2 foto3 het verhaal mag dus maar 3 fotos hebbne. Zet de output in een JSON formaat.`,
+          Zet ook op drie verschillende plekken in het verhaal waar een foto moet doe dit door te zeggen foto1 foto2 foto3 het verhaal mag dus maar 3 fotos hebben. Zet de output in een JSON formaat.`,
         },
         {
           role: "user",
@@ -74,11 +74,21 @@ app.post("/create-fairy-tale.html", async (req, res) => {
 });
 
 app.post("/random", async (req, res) => {
-  const random = await openai.answers.create({
+  const random = await openai.chat.completions.create({
     messages: [
       {
         role: "system",
-        content: `Schrijf een fantasieverhaal in het NEDERLANDS die 2000 woorden lang is dit verhaal moet een hero's journy hebben en 3 keywords bevatten. De keywords moeten 1 woord lang zijn. en moet gebruikt kunnen wordn om fotos te vinden`,
+        content: `Schrijf een fantasieverhaal in het NEDERLANDS die 2000 woorden lang is dit verhaal moet een hero's journy hebben. Geef het verhaal ook een titel De titel moet altijd boven het verhaal staan onder de keywords.
+        Genereer ook 3 keywords; laat de keywords slechts 1 woord lang zijn.
+        Deze keywords moeten gebruikt kunnen worden om 1 foto per keyword te zoeken die goed bij het verhaal past. Beschrijf de keywords als eerste bovenaan het verhaal voordat de titel wordt genoemd;
+        DOE HET ALTIJD ALS VOLGT: Keywords: keyword1, keyword2, keyword3.!!!! er hoeft geen comma , na de laatste keyword. De keywords moeten ook in het ENGELS zijn maar het verhaal zelf moet in het NEDERLANDS zijn.
+        De keywords moeten geen namen zijn van de karakters. Het verhaal moet in het NEDERLANDS zijn.
+        Zet ook op drie verschillende plekken in het verhaal waar een foto moet doe dit door te zeggen foto1 foto2 foto3 het verhaal mag dus maar 3 fotos hebbne. Zet de output in een JSON formaat.
+        Je hoeft net te vermelden verhaal: of wat het doel van het verhaal was.
+        het is Keywords:
+        Title:
+        Story:
+        `,
       },
     ],
     model: "gpt-4-1106-preview",
@@ -88,6 +98,19 @@ app.post("/random", async (req, res) => {
     presence_penalty: 0,
     frequency_penalty: 0,
   });
+  for await (chunk of random) {
+    // only writes the chunks that are not empty or undefined
+    if (
+      chunk.choices[0].delta.content !== undefined &&
+      chunk.choices[0].delta.content !== null
+    ) {
+      res.write(chunk.choices[0].delta.content);
+    }
+    // stops the stream
+    if (chunk.choices[0].finish_reason === "stop") {
+      res.end();
+    }
+  }
 });
 
 // Image generation

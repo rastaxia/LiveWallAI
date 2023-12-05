@@ -8,16 +8,92 @@ const outputDiv = document.querySelector("#output");
 let called = false;
 let keywords = [];
 
-random.addEventListener("click", function (event) {
+random.addEventListener("click", async function (event) {
   event.preventDefault();
-  console.log("random button clicked");
-  fetch("/random", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({}),
-  });
+  try {
+    const randomStory = await fetch("/random", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
+    console.log(randomStory);
+    const reader = randomStory.body.getReader();
+    return new ReadableStream({
+      start(controller) {
+        // The following function handles each data chunk
+        function push() {
+          // "done" is a Boolean and value a "Uint8Array"
+          reader.read().then(({ done, value }) => {
+            // If there is no more data to read
+            if (done) {
+              console.log("done", done);
+              controller.close();
+              return;
+            }
+            // Get the data and send it to the browser via the controller
+            controller.enqueue(value);
+            // decodes the data
+            value = new TextDecoder().decode(value);
+            // replaces everything that is not a period and a new line with a break
+            let totalContent = (outputDiv.innerHTML + value)
+              .replace(
+                /\\n|([^.]|^)\n([^.]|$)|\n+|(?!\.)\n(?!\.)/g,
+                (_, a, b, c) => (a ? "<br/>" : c ? "<br/>" : "")
+              )
+              // replaces all the unwanted characters
+              .replace(/['"{}}]/g, "")
+              // sometimes returns some undefined values
+              .replace("undefined", "")
+              // replaces the photos with images elements
+              .replace(
+                /(foto1)|(Foto1)/g,
+                "<img id='photo1' src='#' alt='Photo 1' >"
+              )
+              .replace(
+                /(foto2)|(Foto2)/g,
+                "<img id='photo2' src='#' alt='Photo 2' >"
+              )
+              .replace(
+                /(foto3)|(Foto3)/g,
+                "<img id='photo3' src='#' alt='Photo 3' >"
+              );
+            // sets the innerHTML of the output div to the new content
+            outputDiv.innerHTML = totalContent;
+
+            // Extracting keywords from the content
+            const keywordsMatch = totalContent.match(/Keywords: (.+?)\./i);
+            let extractedKeywords = [];
+            if (keywordsMatch && keywordsMatch.length > 1) {
+              extractedKeywords = keywordsMatch[1].split(", ");
+            }
+
+            // Ensure only three keywords are considered
+            const finalKeywords = extractedKeywords.slice(0, 3).map((keyword) =>
+              keyword
+                .split("<br>")[0]
+                .replace(/<[^>]*>/g, "")
+                .trim()
+            );
+
+            // Store the final keywords for later use
+            keywords = finalKeywords;
+            if (keywords.length === 3) {
+              if (!called) {
+                called = true;
+                imgGenerate();
+              }
+            }
+            push();
+          });
+        }
+        push();
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Add a submit event listener to the form
@@ -59,15 +135,19 @@ start.addEventListener("click", async function (event) {
               }
               // Get the data and send it to the browser via the controller
               controller.enqueue(value);
-              // Check chunks by logging to the console
+              // decodes the data
               value = new TextDecoder().decode(value);
+              // replaces everything that is not a period and a new line with a break
               let totalContent = (outputDiv.innerHTML + value)
                 .replace(
                   /\\n|([^.]|^)\n([^.]|$)|\n+|(?!\.)\n(?!\.)/g,
                   (_, a, b, c) => (a ? "<br/>" : c ? "<br/>" : "")
                 )
+                // replaces all the unwanted characters
                 .replace(/['"{}}]/g, "")
+                // sometimes returns some undefined values
                 .replace("undefined", "")
+                // replaces the photos with images elements
                 .replace(
                   /(foto1)|(Foto1)/g,
                   "<img id='photo1' src='#' alt='Photo 1' >"
@@ -80,6 +160,7 @@ start.addEventListener("click", async function (event) {
                   /(foto3)|(Foto3)/g,
                   "<img id='photo3' src='#' alt='Photo 3' >"
                 );
+              // sets the innerHTML of the output div to the new content
               outputDiv.innerHTML = totalContent;
 
               // Extracting keywords from the content
