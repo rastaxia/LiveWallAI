@@ -52,7 +52,7 @@ function convertToPDF() {
 function getChoicePDF(action, message) {
     const response = confirm("Wil je het verhaal opslaan?")
     if (confirm) {
-      //If user say 'yes' to confirm the PDF will download
+      //If user say 'yes' to confirm the PDF will be downloaded
       convertToPDF();
     } else {
       //If user say 'no' and cancelled the action
