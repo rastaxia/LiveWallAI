@@ -44,7 +44,7 @@ decreaseBtn2.addEventListener('click', () => {
 downloadBtn = document.getElementById('download')
 downloadBtn.addEventListener('click', getChoicePDF)
 function convertToPDF() {
-    let pdfFile = document.getElementById('textPdf');    // select text in HTML to convert to PDF
+    let pdfFile = document.getElementById('textpdf');    // select text in HTML to convert to PDF
     html2pdf(pdfFile);  // convert html to pdf
   }
 
