@@ -1,6 +1,5 @@
 body {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* stripe with bullet */
@@ -56,7 +55,7 @@ input {
 /* buttons */
 button {
   border-radius: 1.5vw;
-  margin-top: 39%;
+  margin-top: 5%;
 }
 
 #randomButton {
@@ -82,4 +81,14 @@ button {
   font-weight: 400;
   margin-bottom: 3%;
   line-height: normal;
+}
+
+#output {
+  font-size: 22px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+img {
+  mix-blend-mode: multiply;
 }
