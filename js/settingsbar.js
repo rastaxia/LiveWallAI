@@ -50,7 +50,7 @@ function convertToPDF() {
 
 // Pop-up window to save PDF
 function getChoicePDF(action, message) {
-    const response = confirm("Wil je het verhaal opslaan als PDF?")
+    const response = confirm("Wil je het verhaal opslaan?")
     if (confirm) {
       //If user say 'yes' to confirm the PDF will download
       convertToPDF();
