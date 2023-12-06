@@ -258,6 +258,20 @@ async function imgGenerate() {
 let text = document.querySelector("#output"); // selected paragraph to change fontsize
 let textFontSize = 22; // Start number of fontsize. Is the same as p fontsize
 
+const popup = document.getElementById("popover");
+
+const fontPop = document.getElementById("fontPopover");
+
+popup.addEventListener("click", () => {
+  fontPop.style.display = "block";
+});
+
+const closePop = document.getElementById("close");
+
+closePop.addEventListener("click", () => {
+  fontPop.style.display = "none";
+});
+
 const increaseBtn = document.getElementById("increasefontSize");
 const decreaseBtn = document.getElementById("decreasefontSize"); // get id of buttons change fontsize
 
