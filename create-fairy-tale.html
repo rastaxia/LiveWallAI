@@ -73,11 +73,14 @@
             <img src="img/home-icon.png" alt="" />
           </a>
         </button>
-        <button popovertarget="fontPopover">
+        <button id="popover">
           <img src="img/font-icon.png" alt="" />
         </button>
         <!-- Popover increase and decrease font and lineheight -->
-        <div id="fontPopover" popover>
+        <div id="fontPopover">
+          <div id="close">
+            <span id="exit">X</span>
+          </div>
           <h2><span>L</span>ettertype grootte</h2>
           <div class="changeFontsize">
             <button id="decreasefontSize">

@@ -375,6 +375,18 @@ footer {
   margin-top: 77.5%;
   margin-left: 28%;
   position: fixed;
+  bottom: 0;
+  display: none;
+}
+
+#close {
+  background: white;
+  padding: 5%;
+  border-radius: 50%;
+  border: none;
+  float: right;
+  margin-top: -3%;
+  margin-right: -3%;
 }
 
 /* Change fontsize in popover */
