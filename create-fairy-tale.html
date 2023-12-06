@@ -3,21 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css -->
     <link rel="stylesheet" type="text/css" href="./style/main.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./style/create-fairy-tale.css"
-    />
-    <script
-      type="text/javascript"
-      defer
-      src="./js/create-fairy-tale.js"
-    ></script>
+    <!-- pdf script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+    <!-- client css -->
     <script defer src="./js/script.js"></script>
     <title>Create fairy tale</title>
   </head>
-
   <body>
     <main>
       <!-- Title -->
@@ -67,9 +60,49 @@
           <button id="startStory">Begin jouw sprookje</button>
         </div>
       </form>
-      <div id="output">
-        <!-- Generated fairy tale will be displayed here -->
-      </div>
+      <button id="listenBtn">Luister verhaal</button>
+      <!-- Generated fairy tale will be displayed here -->
+      <div id="output"></div>
     </main>
+    <!-- Footer -->
+    <footer>
+      <!-- Settingsbar -->
+      <div class="settingsbar">
+        <button>
+          <a href="./home.html">
+            <img src="img/home-icon.png" alt="" />
+          </a>
+        </button>
+        <button popovertarget="fontPopover">
+          <img src="img/font-icon.png" alt="" />
+        </button>
+        <!-- Popover increase and decrease font and lineheight -->
+        <div id="fontPopover" popover>
+          <h2><span>L</span>ettertype grootte</h2>
+          <div class="changeFontsize">
+            <button id="decreasefontSize">
+              <img src="img/minus-button.png" alt="" />
+            </button>
+            <input type="text" name="fontSize" placeholder="22" disabled />
+            <button id="increasefontSize">
+              <img src="img/plus-button.png" alt="" />
+            </button>
+          </div>
+          <h2><span>I</span>nterlinie</h2>
+          <div class="changeLineheight">
+            <button id="decreaselineHeight">
+              <img src="img/minus-button.png" alt="" />
+            </button>
+            <input type="text" name="lineHeight" placeholder="1" disabled />
+            <button id="increaselineHeight">
+              <img src="img/plus-button.png" alt="" />
+            </button>
+          </div>
+        </div>
+        <button id="download">
+          <img src="img/download-icon.png" alt="" />
+        </button>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,3 +1,4 @@
+// Server side
 // Import required modules
 const express = require("express");
 const OpenAI = require("openai");
@@ -78,7 +79,7 @@ app.post("/random", async (req, res) => {
     messages: [
       {
         role: "system",
-        content: `Schrijf een fantasieverhaal in het NEDERLANDS die 2000 woorden lang is dit verhaal moet een hero's journy hebben. Geef het verhaal ook een titel De titel moet altijd boven het verhaal staan onder de keywords.
+        content: `Schrijf een random fantasieverhaal in het NEDERLANDS die nog nooit eerder is verteld en die 2000 woorden lang is dit verhaal moet een hero's journy hebben. Geef het verhaal ook een titel De titel moet altijd boven het verhaal staan onder de keywords.
         Genereer ook 3 keywords; laat de keywords slechts 1 woord lang zijn.
         Deze keywords moeten gebruikt kunnen worden om 1 foto per keyword te zoeken die goed bij het verhaal past. Beschrijf de keywords als eerste bovenaan het verhaal voordat de titel wordt genoemd;
         DOE HET ALTIJD ALS VOLGT: Keywords: keyword1, keyword2, keyword3.!!!! er hoeft geen comma , na de laatste keyword. De keywords moeten ook in het ENGELS zijn maar het verhaal zelf moet in het NEDERLANDS zijn.

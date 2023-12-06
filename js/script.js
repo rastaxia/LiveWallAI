@@ -5,11 +5,27 @@ const worldInput = document.querySelector("#magicWorld");
 const start = document.querySelector("#startStory");
 const random = document.querySelector("#randomButton");
 const outputDiv = document.querySelector("#output");
+const listen = document.querySelector("#listenBtn");
 let called = false;
 let keywords = [];
+//put story in array
+let story = "";
 
+// set width of input with placeholder
+let input = document.querySelectorAll("input");
+for (i = 0; i < input.length; i++) {
+  input[i].setAttribute("size", input[i].getAttribute("placeholder").length);
+}
+
+// random story generation
 random.addEventListener("click", async function (event) {
+  // Prevent the default form submission behavior
   event.preventDefault();
+  // hides the random button and the start button and shows the listen button
+  random.style.display = "none";
+  start.style.display = "none";
+  listen.style.display = "block";
+  listen.disabled = true;
   try {
     const randomStory = await fetch("/random", {
       method: "POST",
@@ -18,7 +34,6 @@ random.addEventListener("click", async function (event) {
       },
       body: JSON.stringify({}),
     });
-    console.log(randomStory);
     const reader = randomStory.body.getReader();
     return new ReadableStream({
       start(controller) {
@@ -28,7 +43,8 @@ random.addEventListener("click", async function (event) {
           reader.read().then(({ done, value }) => {
             // If there is no more data to read
             if (done) {
-              console.log("done", done);
+              console.log("complete");
+              listen.disabled = false;
               controller.close();
               return;
             }
@@ -61,6 +77,7 @@ random.addEventListener("click", async function (event) {
               );
             // sets the innerHTML of the output div to the new content
             outputDiv.innerHTML = totalContent;
+            story = totalContent;
 
             // Extracting keywords from the content
             const keywordsMatch = totalContent.match(/Keywords: (.+?)\./i);
@@ -96,11 +113,16 @@ random.addEventListener("click", async function (event) {
   }
 });
 
-// Add a submit event listener to the form
+// story generation
 start.addEventListener("click", async function (event) {
   // Prevent the default form submission behavior
   event.preventDefault();
 
+  // hides the random button and the start button and shows the listen button
+  random.style.display = "none";
+  start.style.display = "none";
+  listen.style.display = "block";
+  listen.disabled = true;
   // Get the values entered by the user for name and writing style
   const name = nameInput.value;
   const local = locationInput.value;
@@ -129,7 +151,7 @@ start.addEventListener("click", async function (event) {
             reader.read().then(({ done, value }) => {
               // If there is no more data to read
               if (done) {
-                console.log("done", done);
+                listen.disabled = false;
                 controller.close();
                 return;
               }
@@ -162,6 +184,7 @@ start.addEventListener("click", async function (event) {
                 );
               // sets the innerHTML of the output div to the new content
               outputDiv.innerHTML = totalContent;
+              story = outputDiv.innerHTML;
 
               // Extracting keywords from the content
               const keywordsMatch = totalContent.match(/Keywords: (.+?)\./i);
@@ -229,3 +252,94 @@ async function imgGenerate() {
     }
   }, 1000);
 }
+
+// settings bar
+// change fontsize in pop up
+let text = document.querySelector("#output"); // selected paragraph to change fontsize
+let textFontSize = 22; // Start number of fontsize. Is the same as p fontsize
+
+const increaseBtn = document.getElementById("increasefontSize");
+const decreaseBtn = document.getElementById("decreasefontSize"); // get id of buttons change fontsize
+
+increaseBtn.addEventListener("click", () => {
+  textFontSize += 1; // fontsize +1
+  text.style.fontSize = `${textFontSize}px`;
+  document.getElementsByName("fontSize")[0].placeholder =
+    text.style.fontSize = `${textFontSize}`; // fontsize shown in placeholder
+});
+
+decreaseBtn.addEventListener("click", () => {
+  textFontSize -= 1; // fontsize -1
+  text.style.fontSize = `${textFontSize}px`;
+  document.getElementsByName("fontSize")[0].placeholder =
+    text.style.fontSize = `${textFontSize}`; // fontsize shown in placeholder
+});
+
+// Change line-height
+text = document.querySelector("#output"); // selected paragraph to change fontsize
+
+let textLineheight = 1;
+
+const increaseLine = document.getElementById("increaselineHeight");
+const decreaseLine = document.getElementById("decreaselineHeight"); // get id of buttons change lineheight
+
+increaseLine.addEventListener("click", () => {
+  textLineheight += 0.5; // lineheight +1
+  text.style.lineHeight = `${textLineheight}`;
+  document.getElementsByName("lineHeight")[0].placeholder =
+    text.style.lineHeight = `${textLineheight}`; // lineheight shown in placeholder
+});
+decreaseLine.addEventListener("click", () => {
+  textLineheight -= 0.5; // lineheight -1
+  text.style.lineHeight = `${textLineheight}`;
+  document.getElementsByName("lineHeight")[0].placeholder =
+    text.style.lineHeight = `${textLineheight}`; // lineheight shown in placeholder
+});
+
+// Convert HTML to PDF
+downloadBtn = document.getElementById("download");
+downloadBtn.addEventListener("click", getChoicePDF);
+function convertToPDF() {
+  let pdfFile = document.getElementById("output"); // select text in HTML to convert to PDF
+  html2pdf(pdfFile); // convert html to pdf
+}
+
+// Pop-up window to save PDF
+function getChoicePDF() {
+  if (confirm("Wilt U het verhaal opslaan?")) {
+    convertToPDF();
+  } else {
+    alert("Verhaal niet opgeslagen");
+  }
+}
+
+// Text to speech
+// tts not yet working
+// Text to speech generation Elevenlabs
+const options = {
+  method: "POST", // send data to server
+  headers: {
+    "xi-api-key": "ffdcbccb0c111a5e2b188c0ab6a21422",
+    "Content-Type": "application/json",
+  },
+  body: `{"text":${story},"voice_settings":{"similarity_boost":1,"stability":1}}`,
+};
+
+function playAudio() {
+  fetch(
+    "https://api.elevenlabs.io/v1/text-to-speech/pNInz6obpgDQGcFmaJgB",
+    options
+  ) // make HTTP request to server for certain voice
+    .then((response) => response.blob()) // response of server
+    .then((audioBlob) => {
+      const audioUrl = URL.createObjectURL(audioBlob); // creates an audio url for audio data
+      const audioElement = new Audio(audioUrl); // creates audio source to run
+      audioElement.play(); // Play audio with selected voice
+    })
+    .catch((err) => console.error(err));
+}
+
+const playBtn = document.getElementById("listenBtn");
+playBtn.addEventListener("click", function () {
+  playAudio();
+});
