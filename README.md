@@ -14,6 +14,8 @@ npm install
 
 ## Usage
 
+Zet uw eigen API key in de .env file, zodat u gebruik kunt maken van de API in app.js
+
 Terwijl de applicatie bedoeld is om te draaien op een tablet(768x1024) in een boek, kan je het ook draaien en uitproberen lokaal in een browser. 
 
 ## Contributing
