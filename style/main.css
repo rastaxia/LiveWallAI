@@ -96,6 +96,8 @@ main h1 {
   font-style: italic;
   font-weight: 400;
   line-height: normal;
+  
+  text-align: center;
 }
 
 h1 span {
@@ -113,7 +115,7 @@ p {
   font-size: 1.25rem;
   font-weight: 400;
   margin-bottom: 3%;
-  line-height: normal;
+  line-height: 1.5;
 }
 
 /* Buttons */
@@ -122,7 +124,7 @@ p {
 Add ".Primary" or ".Secondary" to style it. */
 
 .button {
-  border-radius: 7vw;
+  border-radius: 1.5vw;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
@@ -136,7 +138,6 @@ Add ".Primary" or ".Secondary" to style it. */
   color: white;
   border: 0.391vw solid #326760;
   padding: 3% 4%;
-  float: right;
   outline: 0.3vw solid white;
   outline-offset: -1.3vw;
 }
